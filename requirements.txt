@@ -1,0 +1,14 @@
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pydantic>=2.9.0
+numpy>=2.0.0
+scikit-learn>=1.6.0
+python-multipart>=0.0.12
+python-dotenv>=1.0.1
+httpx>=0.28.0
+pytest>=8.0.0
+# Optional LLM & Vector Backends (auto-detected if installed)
+# google-genai>=2.30.1
+# sentence-transformers>=3.0.0
+# faiss-cpu>=1.8.0
+# pypdf>=4.0.0
