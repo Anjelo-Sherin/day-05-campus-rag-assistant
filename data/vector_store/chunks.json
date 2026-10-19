@@ -1,0 +1,222 @@
+[
+  {
+    "chunk_id": "CS301_AI_Syllabus_2026.pdf::p1::c0",
+    "file_name": "CS301_AI_Syllabus_2026.pdf",
+    "page_number": 1,
+    "text": "Course Syllabus: CS-301 Artificial Intelligence & Machine Learning (Fall 2026)\nInstructor: Prof. Ananya Sharma | Office: Turing Block Room 402 | Credits: 4.0\nSection 1: Grading Policy and Evaluation Weightage\nThe final course grade for CS-301 is computed from four mandatory assessment\ncomponents: Programming Assignments & Labs carry 25% weightage, the Mid-Semester\nExamination carries 25% weightage, the Capstone RAG & Agents Project carries 20%\nweightage, and the Comprehensive End-Semester Examination carries 30% weightage. To",
+    "chunk_index": 0,
+    "char_start": 0,
+    "char_end": 532,
+    "doc_type": "pdf",
+    "section_title": "Section 1: Grading Policy and Evaluation Weightage"
+  },
+  {
+    "chunk_id": "CS301_AI_Syllabus_2026.pdf::p1::c1",
+    "file_name": "CS301_AI_Syllabus_2026.pdf",
+    "page_number": 1,
+    "text": "ne RAG & Agents Project carries 20%\nweightage, and the Comprehensive End-Semester Examination carries 30% weightage. To\npass CS-301, a student must score at least 40% overall and at least 35% in the\nEnd-Semester Examination.",
+    "chunk_index": 1,
+    "char_start": 412,
+    "char_end": 636,
+    "doc_type": "pdf",
+    "section_title": "ne RAG & Agents Project carries 20%"
+  },
+  {
+    "chunk_id": "CS301_AI_Syllabus_2026.pdf::p2::c2",
+    "file_name": "CS301_AI_Syllabus_2026.pdf",
+    "page_number": 2,
+    "text": "Section 2: Late Submission Policy and Slip Days\nAll programming assignments and project milestones are due at 11:59 PM IST on the\nannounced deadline date. Each student is granted a total of 3 grace slip days for the\nentire semester, with at most 2 slip days usable on any single assignment. Once slip\ndays are exhausted, late submissions incur a flat penalty of 10% per day for up to 3\ncalendar days. Submissions more than 72 hours (3 days) past the deadline will not be\naccepted and receive zero marks.\nSection 3: Weekly Syllabus & Lab Requirements",
+    "chunk_index": 2,
+    "char_start": 0,
+    "char_end": 550,
+    "doc_type": "pdf",
+    "section_title": "Section 2: Late Submission Policy and Slip Days"
+  },
+  {
+    "chunk_id": "CS301_AI_Syllabus_2026.pdf::p2::c3",
+    "file_name": "CS301_AI_Syllabus_2026.pdf",
+    "page_number": 2,
+    "text": "s (3 days) past the deadline will not be\naccepted and receive zero marks.\nSection 3: Weekly Syllabus & Lab Requirements\nWeeks 1-4 cover Uninformed & Heuristic Search (A*, Minimax) and Probabilistic Graphical\nModels. Weeks 5-8 cover Supervised Learning, Neural Networks, and Transformer\nArchitectures. Weeks 9-12 cover Retrieval-Augmented Generation (RAG), Vector Databases\n(FAISS/Chroma), Dense Embeddings (MiniLM/BGE), and Grounded Evaluation Metrics.",
+    "chunk_index": 3,
+    "char_start": 430,
+    "char_end": 882,
+    "doc_type": "pdf",
+    "section_title": "Section 3: Weekly Syllabus & Lab Requirements"
+  },
+  {
+    "chunk_id": "CS301_AI_Syllabus_2026.pdf::p3::c4",
+    "file_name": "CS301_AI_Syllabus_2026.pdf",
+    "page_number": 3,
+    "text": "Section 4: CS-301 Examination Schedule and Lab Hardware\nThe CS-301 Mid-Semester Exam is scheduled on October 14, 2026 from 09:30 AM to 11:30 AM\nin Lecture Hall Complex LHC-101. The End-Semester Exam is scheduled on December 08,\n2026 from 02:00 PM to 05:00 PM in LHC-101. Mid-Semester exams are closed-book, except\nstudents may bring one handwritten A4 double-sided formula sheet. Final Capstone\nProject demos and code viva will take place on November 28, 2026 in the AI Systems Lab\n(Turing Block 204).",
+    "chunk_index": 4,
+    "char_start": 0,
+    "char_end": 501,
+    "doc_type": "pdf",
+    "section_title": "Section 4: CS-301 Examination Schedule and Lab Hardware"
+  },
+  {
+    "chunk_id": "Academic_Regulations_Handbook.pdf::p1::c5",
+    "file_name": "Academic_Regulations_Handbook.pdf",
+    "page_number": 1,
+    "text": "University Academic Regulations Handbook (2026-2027 Edition)\nArticle 4.1: Mandatory Class Attendance Requirement\nEvery enrolled undergraduate and postgraduate student must maintain a minimum\nattendance of 75% separately in every registered theory and laboratory course. Students\nwhose attendance falls below 75% will be debarred (detained) from appearing in the\nEnd-Semester Examination for that course and awarded an 'FA' (Failure due to\nAttendance) grade.\nArticle 4.2: Medical Leave and Attendance Condonation",
+    "chunk_index": 5,
+    "char_start": 0,
+    "char_end": 512,
+    "doc_type": "pdf",
+    "section_title": "Article 4.1: Mandatory Class Attendance Requirement"
+  },
+  {
+    "chunk_id": "Academic_Regulations_Handbook.pdf::p1::c6",
+    "file_name": "Academic_Regulations_Handbook.pdf",
+    "page_number": 1,
+    "text": "hat course and awarded an 'FA' (Failure due to\nAttendance) grade.\nArticle 4.2: Medical Leave and Attendance Condonation\nThe Dean of Academic Affairs may grant a maximum attendance relaxation of up to 10%\n(lowering the threshold from 75% to 65%) strictly for documented hospitalization or\nrepresenting the university in national competitions. Medical certificates must be\nsubmitted to the Academic Section within 5 working days of returning to campus.",
+    "chunk_index": 6,
+    "char_start": 392,
+    "char_end": 842,
+    "doc_type": "pdf",
+    "section_title": "Article 4.2: Medical Leave and Attendance Condonation"
+  },
+  {
+    "chunk_id": "Academic_Regulations_Handbook.pdf::p2::c7",
+    "file_name": "Academic_Regulations_Handbook.pdf",
+    "page_number": 2,
+    "text": "Article 6.1: CGPA Grading Scale, Probation, and Honours\nThe university follows a 10-point Absolute/Relative Letter Grading System: O\n(Outstanding) = 10 points, A+ = 9 points, A = 8 points, B+ = 7 points, B = 6 points, C\n= 5 points, P (Pass) = 4 points, and F (Fail) = 0 points. A minimum Cumulative Grade\nPoint Average (CGPA) of 5.50 is required for graduation in B.Tech programmes. Any\nstudent whose Semester GPA (SGPA) drops below 5.00 in a regular semester is placed on",
+    "chunk_index": 7,
+    "char_start": 0,
+    "char_end": 473,
+    "doc_type": "pdf",
+    "section_title": "Article 6.1: CGPA Grading Scale, Probation, and Honours"
+  },
+  {
+    "chunk_id": "Academic_Regulations_Handbook.pdf::p2::c8",
+    "file_name": "Academic_Regulations_Handbook.pdf",
+    "page_number": 2,
+    "text": "duation in B.Tech programmes. Any\nstudent whose Semester GPA (SGPA) drops below 5.00 in a regular semester is placed on\nAcademic Probation and restricted to a maximum credit load of 16 credits in the\nfollowing semester. Students graduating with a CGPA of 8.50 or higher and zero\nhistorical backlogs are awarded B.Tech with Distinction.",
+    "chunk_index": 8,
+    "char_start": 353,
+    "char_end": 688,
+    "doc_type": "pdf",
+    "section_title": "duation in B.Tech programmes. Any"
+  },
+  {
+    "chunk_id": "Academic_Regulations_Handbook.pdf::p3::c9",
+    "file_name": "Academic_Regulations_Handbook.pdf",
+    "page_number": 3,
+    "text": "Article 8.3: Academic Integrity, Plagiarism, and Generative AI Policy\nAll submitted theses, lab reports, and code repositories are screened via Turnitin and\nMOSS similarity checkers. Text similarity exceeding 15% (excluding bibliography and\nquoted citations) constitutes academic misconduct. Use of Generative AI tools (such as\nGemini or ChatGPT) is permitted only when explicitly authorized by the course\ninstructor and must be accompanied by an AI Disclosure Statement detailing prompts and\nverification steps.",
+    "chunk_index": 9,
+    "char_start": 0,
+    "char_end": 512,
+    "doc_type": "pdf",
+    "section_title": "Article 8.3: Academic Integrity, Plagiarism, and Generative AI Policy"
+  },
+  {
+    "chunk_id": "Academic_Regulations_Handbook.pdf::p3::c10",
+    "file_name": "Academic_Regulations_Handbook.pdf",
+    "page_number": 3,
+    "text": "by the course\ninstructor and must be accompanied by an AI Disclosure Statement detailing prompts and\nverification steps. First-time violations result in zero marks for the assessment;\nsecond violations result in an 'F' grade in the course.\nArticle 9.2: Answer Script Inspection and Revaluation\nStudents may apply for answer script revaluation within 7 calendar days of grade\npublication by paying a revaluation fee of Rs. 500 per course. If the revised score\nincreases by 5% or more, the fee is fully refunded.",
+    "chunk_index": 10,
+    "char_start": 392,
+    "char_end": 902,
+    "doc_type": "pdf",
+    "section_title": "Article 9.2: Answer Script Inspection and Revaluation"
+  },
+  {
+    "chunk_id": "Campus_Hostel_Library_Circular.pdf::p1::c11",
+    "file_name": "Campus_Hostel_Library_Circular.pdf",
+    "page_number": 1,
+    "text": "Office of the Chief Warden & Central Library - Campus Circular No. 2026/19\nSection 1: Student Hostel Gate Timings and Night Pass Rules\nAll residential hostel main gates close at 11:00 PM on weekdays (Sunday to Thursday)\nand 11:59 PM on weekends (Friday and Saturday). Biometric attendance is recorded at the\nhostel reception between 10:30 PM and 11:15 PM daily. Students accessing the 24x7\nCentral Reading Room or AI Compute Lab after 11:00 PM must generate a Digital Night\nPass on the Campus Portal approved by their Faculty Advisor.",
+    "chunk_index": 11,
+    "char_start": 0,
+    "char_end": 534,
+    "doc_type": "pdf",
+    "section_title": "Section 1: Student Hostel Gate Timings and Night Pass Rules"
+  },
+  {
+    "chunk_id": "Campus_Hostel_Library_Circular.pdf::p1::c12",
+    "file_name": "Campus_Hostel_Library_Circular.pdf",
+    "page_number": 1,
+    "text": "AI Compute Lab after 11:00 PM must generate a Digital Night\nPass on the Campus Portal approved by their Faculty Advisor. Day scholars and external\nvisitors are permitted in hostel common rooms only between 09:00 AM and 08:00 PM.",
+    "chunk_index": 12,
+    "char_start": 414,
+    "char_end": 642,
+    "doc_type": "pdf",
+    "section_title": "AI Compute Lab after 11:00 PM must generate a Digital Night"
+  },
+  {
+    "chunk_id": "Campus_Hostel_Library_Circular.pdf::p2::c13",
+    "file_name": "Campus_Hostel_Library_Circular.pdf",
+    "page_number": 2,
+    "text": "Section 2: Central Library Borrowing Privileges and Overdue Fines\nUndergraduate students may borrow up to 5 books simultaneously for a loan period of 14\ndays. Postgraduate and M.Tech students may borrow up to 8 books for 21 days, and Ph.D.\nscholars may borrow up to 12 books for 30 days. A borrowed book may be renewed online\nonce if no reservation hold exists. Overdue books attract a late fine of Rs. 5 per day\nper book for the first 7 days, and Rs. 15 per day thereafter. Reference textbooks and",
+    "chunk_index": 13,
+    "char_start": 0,
+    "char_end": 499,
+    "doc_type": "pdf",
+    "section_title": "Section 2: Central Library Borrowing Privileges and Overdue Fines"
+  },
+  {
+    "chunk_id": "Campus_Hostel_Library_Circular.pdf::p2::c14",
+    "file_name": "Campus_Hostel_Library_Circular.pdf",
+    "page_number": 2,
+    "text": "ract a late fine of Rs. 5 per day\nper book for the first 7 days, and Rs. 15 per day thereafter. Reference textbooks and\nIEEE/ACM bound journals are strictly for in-library consultation.",
+    "chunk_index": 14,
+    "char_start": 379,
+    "char_end": 564,
+    "doc_type": "pdf",
+    "section_title": "ract a late fine of Rs. 5 per day"
+  },
+  {
+    "chunk_id": "Campus_Hostel_Library_Circular.pdf::p3::c15",
+    "file_name": "Campus_Hostel_Library_Circular.pdf",
+    "page_number": 3,
+    "text": "Section 3: Campus Wi-Fi (EduRoam), GPU Cluster, and Mess Rebate Policy\nEvery student receives a high-speed EduRoam Wi-Fi quota of 50 GB per week on the 5 GHz\ncampus network. Peer-to-peer torrenting and unauthorized cryptocurrency mining on\ncampus networks or the DGX GPU cluster lead to immediate MAC address suspension.\nStudents taking approved leave from campus for 5 or more consecutive days can apply for\na hostel mess rebate of Rs. 160 per day via the Student ERP at least 48 hours prior to\ndeparture.",
+    "chunk_index": 15,
+    "char_start": 0,
+    "char_end": 506,
+    "doc_type": "pdf",
+    "section_title": "Section 3: Campus Wi-Fi (EduRoam), GPU Cluster, and Mess Rebate Policy"
+  },
+  {
+    "chunk_id": "Scholarship_Internship_Guidelines.html::p1::c16",
+    "file_name": "Scholarship_Internship_Guidelines.html",
+    "page_number": 1,
+    "text": "Financial Aid, Scholarships & Industrial Internship Guidelines (2026) \n\nSection 1: Merit-cum-Means (MCM) and Dean's Merit Scholarship \n\nThe Merit-cum-Means (MCM) Scholarship provides a 50% tuition fee waiver plus a monthly stipend of Rs. 3,000 for ten months each academic year. To qualify for the MCM Scholarship, a student must have an annual gross family income below Rs. 6,00,000 (Six Lakhs), maintain a minimum CGPA of 7.50, and have no active disciplinary or academic backlog records. Applications close on September 30 every year.",
+    "chunk_index": 16,
+    "char_start": 0,
+    "char_end": 540,
+    "doc_type": "webpage",
+    "section_title": "Section 1: Merit-cum-Means (MCM) and Dean's Merit Scholarship"
+  },
+  {
+    "chunk_id": "Scholarship_Internship_Guidelines.html::p1::c17",
+    "file_name": "Scholarship_Internship_Guidelines.html",
+    "page_number": 1,
+    "text": "of 7.50, and have no active disciplinary or academic backlog records. Applications close on September 30 every year. \n\nThe Dean's Merit Scholarship is awarded automatically to the top 5% of students in each branch based on yearly CGPA (minimum 9.00 CGPA required) and provides a one-time cash award of Rs. 40,000.",
+    "chunk_index": 17,
+    "char_start": 420,
+    "char_end": 734,
+    "doc_type": "webpage",
+    "section_title": "of 7.50, and have no active disciplinary or academic backlog records. Applicatio"
+  },
+  {
+    "chunk_id": "Scholarship_Internship_Guidelines.html::p2::c18",
+    "file_name": "Scholarship_Internship_Guidelines.html",
+    "page_number": 2,
+    "text": "Section 2: Semester-Long Industrial Internship & NOC Rules \n\nFinal-year (7th or 8th semester) B.Tech students with a CGPA of 7.00 or above and zero pending backlogs are eligible to pursue a 6-month (24-week) external industrial or research internship equivalent to 12 academic credits. Students must submit an official offer letter to the Career Development Cell (CDC) at least 15 days before the internship start date to obtain a No Objection Certificate (NOC).",
+    "chunk_index": 18,
+    "char_start": 0,
+    "char_end": 465,
+    "doc_type": "webpage",
+    "section_title": "Section 2: Semester-Long Industrial Internship & NOC Rules"
+  },
+  {
+    "chunk_id": "Scholarship_Internship_Guidelines.html::p2::c19",
+    "file_name": "Scholarship_Internship_Guidelines.html",
+    "page_number": 2,
+    "text": "Development Cell (CDC) at least 15 days before the internship start date to obtain a No Objection Certificate (NOC). \n\nEvaluation of the 6-month internship requires a Mid-Term Progress Review at Week 10 (30% weight) and a Final Technical Report + Joint Industry-Faculty Viva at Week 24 (70% weight).",
+    "chunk_index": 19,
+    "char_start": 345,
+    "char_end": 645,
+    "doc_type": "webpage",
+    "section_title": "Development Cell (CDC) at least 15 days before the internship start date to obta"
+  }
+]

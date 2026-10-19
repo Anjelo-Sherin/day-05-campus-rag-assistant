@@ -1,0 +1,1 @@
+"""Campus RAG Assistant package."""
