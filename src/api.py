@@ -859,6 +859,15 @@ UI_HTML = r"""<!DOCTYPE html>
         btn.textContent = '▶ Run Full Evaluation Benchmark';
       }
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const h = (window.location.hash || '').replace('#', '');
+      if (h === 'admin' || h === 'eval') {
+        switchTab(h);
+      } else if (h === 'demo' || h === 'query') {
+        askPreset('What is the minimum attendance percentage required in every course and what is the medical relaxation?');
+      }
+    });
   </script>
 </body>
 </html>

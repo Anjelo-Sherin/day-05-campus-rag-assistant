@@ -4,23 +4,53 @@
 >
 > **Domain:** Generative AI / LLM / Retrieval-Augmented Generation | **Level:** Intermediate (30 Projects in 30 Days)
 
----
-
-## 1. Problem Statement
-
-University students and faculty constantly search through scattered PDFs, course syllabi, hostel/library circulars, and scholarship handbooks to find exact rules (e.g., *"What is the late submission penalty in CS-301?"*, *"What is the minimum attendance requirement and medical relaxation?"*, *"What is the hostel gate curfew?"*).
-
-Standard LLM chatbots hallucinate policies when a rule isn't in the prompt, while basic RAG demos lack **page-level source verification**, **hybrid lexical+semantic retrieval**, and **measurable evaluation metrics**.
-
-**Campus RAG Assistant** solves this with:
-1. **Multi-Format Ingestion & Page-Preserving Overlapping Chunker:** Parses multi-page `.pdf` files, `.pptx` slide decks, `.docx` files, and `.html`/`.md` web notices while preserving exact `file_name` and `page_number` metadata.
-2. **Hybrid Dense + BM25 Vector Store & Stage-2 Cross-Feature Reranker:** Combines dense L2-normalized semantic vectors (`sentence-transformers` / `1024-d CPU neural-hash`) with Okapi BM25 lexical scoring and a Stage-2 Cross-Feature Reranker (token coverage, bigram phrases, section headings, and numeric/code matching).
-3. **Strict Grounding & Out-of-Scope Refusal Guardrail:** Answers questions **only** from retrieved context with inline `[file_name, p. X]` citation chips. If top retrieval confidence falls below the refusal threshold (`0.28`), the assistant explicitly refuses to answer instead of hallucinating.
-4. **Live SQuAD-Style RAG Evaluation Harness:** Evaluates a 14-question benchmark (10 in-scope campus policy questions + 4 adversarial out-of-scope traps) on **Hit-Rate@1**, **Hit-Rate@K**, **Mean Reciprocal Rank (MRR)**, **Faithfulness**, and **Refusal Accuracy**.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com)
+[![Pytest](https://img.shields.io/badge/Pytest-Passing-brightgreen.svg)](tests/)
 
 ---
 
-## 2. Architecture & Workflow Diagram
+## 1. Application Preview
+
+### 💬 Chat with Documents & Page-Level Citations
+Ask complex academic and administrative questions; receive grounded answers with clickable citation chips (`[file_name, p. X]`) that immediately reveal the exact supporting chunk, dense similarity, BM25 lexical score, and cross-feature reranker weights in the right-hand Inspector.
+
+![Chat & Citation Inspector](screenshots/02_interactive_citations_query.png)
+
+---
+
+### 📂 Document Admin & Knowledge Base Management
+Upload multi-page PDFs, PowerPoint slides (`.pptx`), Word documents (`.docx`), HTML web notices, or plain text. Adjust chunk size and overlap on the fly, inspect chunk boundaries, and manage the campus knowledge base with zero database overhead.
+
+![Admin & Corpus Management Panel](screenshots/02_admin_corpus_panel.png)
+
+---
+
+### 📊 SQuAD-Style RAG Evaluation & Hallucination Benchmark
+Run real-time automated evaluations over a 14-question ground-truth test set (10 in-scope syllabus/regulations queries + 4 adversarial out-of-scope traps) measuring Hit-Rate@1, Hit-Rate@K, Mean Reciprocal Rank (MRR), Faithfulness, and Out-of-Scope Refusal Accuracy.
+
+![RAG Evaluation Harness Studio](screenshots/03_rag_eval_harness.png)
+
+---
+
+## 2. Problem Statement
+
+University students and faculty spend hours sifting through sprawling PDFs, course syllabi, residence hall guidelines, library manuals, and circulars to answer crucial questions (e.g., *"What is the late penalty for CS-301 assignments?"*, *"What attendance percentage is mandatory before debarment?"*, *"What are the hostel night pass rules?"*).
+
+Standard LLMs suffer from two critical flaws:
+1. **Hallucination:** When asked about specific campus policies not in their training data, they invent believable but incorrect rules.
+2. **Lack of Provenance:** Basic RAG demos flatten documents into text, stripping physical page numbers so users cannot verify claims.
+
+**Campus RAG Assistant** provides:
+- **Physical Page-Level Citations:** Every claim is tied directly to `[file_name, p. X]`.
+- **Hybrid Dense + Lexical Retrieval:** Combines dense semantic representations with Okapi BM25 and a Stage-2 Cross-Feature Reranker to capture both semantic paraphrases and exact codes (`CS-301`, `75%`, `Rs. 500`).
+- **Strict Out-of-Scope Guardrails:** If retrieval confidence falls below threshold (`0.28`), the assistant explicitly refuses to answer rather than hallucinating.
+- **Built-in SQuAD Benchmark:** Automatically measures retrieval hit-rate, MRR, and factual faithfulness.
+
+---
+
+## 3. Architecture & Data Flow
 
 ```mermaid
 flowchart LR
@@ -31,76 +61,141 @@ flowchart LR
     E --> F["6. Eval Harness\nHit-Rate@1/K, MRR,\nFaithfulness & Refusal"]
 ```
 
+For detailed architectural specifications, data models, and reranking formulas, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ---
 
-## 3. Tech Stack & Why It Fits
+## 4. Key Features
 
-| Technology | Role in Pipeline | Why This Choice Is Feasible |
+- **Multi-Format Ingestion:** Native extraction for PDF literal streams, XML PowerPoint slides (`.pptx`), Word documents (`.docx`), and HTML pages with structured heading detection.
+- **Overlapping Sentence Chunker:** 550-character chunks with 120-character overlap snapped to sentence boundaries so rules and exceptions remain intact.
+- **Hybrid Retrieval:** Dense Cosine ($\alpha = 0.55$) + query-saturated Okapi BM25 ($0.45$) to guarantee both broad conceptual matching and exact number/acronym hits.
+- **Cross-Feature Reranking:** 5-factor reranker scoring exact token coverage ($30\%$), bigram phrases ($15\%$), section title alignment ($15\%$), and numeric/code matches ($12\%$) with single-token false-positive penalties.
+- **Dual Synthesis Backends:**
+  - **Google Gemini (`gemini-3.8-flash`):** Official `google-genai` Interactions API with structured JSON output when `GEMINI_API_KEY` is provided.
+  - **Grounded Extractive CPU Synthesizer:** High-precision deterministic local engine that runs in $< 2\text{ ms}$ on CPU with zero network calls and 100% offline support.
+- **Interactive Citation Inspector:** Clickable chips in the UI display exact chunk text, page boundaries, dense similarity, and BM25 scores.
+- **Comprehensive SQuAD-Style Evaluation Harness:** Measures Hit-Rate@1, Hit-Rate@K, MRR, and answer faithfulness with one click.
+
+---
+
+## 5. Technology Stack
+
+| Component | Technology | Rationale |
 | :--- | :--- | :--- |
-| **FastAPI + Tailwind Web UI** | Full-Stack RAG Server, Chat UI with Citation Chips, Admin Upload & Eval Dashboard | Zero-build single-command launch with interactive citation inspector and REST API docs (`/docs`). |
-| **Hybrid Vector Store (FAISS / NumPy + Okapi BM25)** | Dense Cosine + Sparse Lexical Retrieval | Free local vector store (`data/vector_store/`) with zero paid infrastructure; handles both semantic paraphrases and exact course codes (`CS-301`, `75%`). |
-| **CPU Embeddings (`all-MiniLM-L6-v2` / `1024-d Hybrid Hash`)** | Document & Query Vectorization | Infers in `< 2 ms` on CPU without requiring a GPU. |
-| **Google Gemini (`gemini-3.8-flash` Interactions API) + Local Grounded Synthesizer** | Grounded Answer Synthesis with Structured JSON | Uses `client.interactions.create(model="gemini-3.8-flash")` when `GEMINI_API_KEY` is set, and falls back seamlessly to a deterministic Grounded Extractive CPU Synthesizer so the app works 100% offline. |
-| **Pytest + SQuAD-Style Benchmark Suite** | Automated RAG Quality Verification | Computes Hit-Rate@1, Hit-Rate@4, MRR, Faithfulness, and Out-of-Scope Refusal Rate in `< 25 ms`. |
+| **Backend & Web Server** | FastAPI, Uvicorn, Pydantic | High-performance asynchronous REST endpoints, automatic OpenAPI schema (`/docs`). |
+| **Frontend UI** | HTML5, Tailwind CSS, Vanilla JS | Ultra-fast single-file dashboard with no external JavaScript build step required. |
+| **Vector Storage** | Local Vector Store (FAISS / NumPy L2) | Zero paid infrastructure; fast persistence in `data/vector_store/`. |
+| **Retrieval Engine** | Hybrid Dense Cosine + Okapi BM25 | Handles conceptual queries and exact alphanumeric terms (`CS-301`, `75%`). |
+| **Embeddings** | 1024-dim CPU Neural-Hash / MiniLM | Extremely fast vectorization on CPU without requiring GPU acceleration. |
+| **LLM Generation** | Google Gemini (`gemini-3.8-flash`) / Local Synth | Official Interactions API when API key provided; local extractive synthesizer offline. |
+| **Testing & Evaluation** | Pytest, TestClient | Automated 14-query ground-truth benchmark and full endpoint test suite. |
 
 ---
 
-## 4. How to Run in 3 Commands
+## 6. Directory Structure
+
+```text
+day-05-campus-rag-assistant/
+├── data/
+│   ├── sample_docs/              # Pre-loaded campus PDFs & HTML documents
+│   │   ├── Academic_Regulations_Handbook.pdf
+│   │   ├── CS301_AI_Syllabus_2026.pdf
+│   │   ├── Campus_Hostel_Library_Circular.pdf
+│   │   └── Scholarship_Internship_Guidelines.html
+│   └── vector_store/             # Persistent chunks & L2-normalized embeddings
+├── docs/                         # Extended project documentation
+│   ├── API.md                    # REST API endpoints & request/response specs
+│   ├── ARCHITECTURE.md           # System architecture, data flow & formulas
+│   └── SETUP.md                  # Comprehensive installation & setup guide
+├── screenshots/                  # Verified application screenshots
+│   ├── 01_chat_citations_dashboard.png
+│   ├── 02_admin_corpus_panel.png
+│   ├── 02_interactive_citations_query.png
+│   └── 03_rag_eval_harness.png
+├── src/
+│   ├── __init__.py
+│   ├── api.py                    # FastAPI server & interactive web dashboard
+│   ├── campus_corpus.py          # Campus document generators & 14-question benchmark
+│   ├── document_parser.py        # PDF, PPTX, DOCX, HTML parser & chunker
+│   ├── evaluator.py              # SQuAD evaluation harness (Hit-Rate, MRR, Faithfulness)
+│   ├── rag_engine.py             # Grounded answer synthesis & refusal guardrail
+│   └── vector_store.py           # Hybrid Dense+BM25 index & cross-feature reranker
+├── tests/
+│   └── test_rag_assistant.py     # Automated pytest test suite
+├── .env.example                  # Environment configuration template
+├── .gitignore                    # Excludes caches, venvs, and secrets
+├── Dockerfile                    # Container definition
+├── LICENSE                       # MIT License
+├── README.md                     # Main documentation
+└── requirements.txt              # Project dependencies
+```
+
+---
+
+## 7. How to Run in 3 Commands
 
 ```bash
-# 1. Activate the virtual environment
+# 1. Clone repository and navigate to folder
+git clone https://github.com/Anjelo-Sherin/day-05-campus-rag-assistant.git
+cd day-05-campus-rag-assistant
+
+# 2. Set up virtual environment and install dependencies
+python3 -m venv .venv
 source .venv/bin/activate
+pip install -r requirements.txt
 
-# 2. Run the automated test & evaluation benchmark suite
+# 3. Run tests and launch server
 python -m pytest -v
-
-# 3. Launch the Campus RAG Assistant web app on http://localhost:8005
 python -m uvicorn src.api:app --host 0.0.0.0 --port 8005
 ```
 
-*(Optional)* To enable live **Google Gemini (`gemini-3.8-flash`)** generation, paste your key into the UI sidebar or export `GEMINI_API_KEY`:
+Open your browser to:
+- **Interactive Web App:** [http://localhost:8005](http://localhost:8005)
+- **API Swagger Documentation:** [http://localhost:8005/docs](http://localhost:8005/docs)
+
+*(Optional)* To enable live **Google Gemini (`gemini-3.8-flash`)** generation:
 ```bash
 export GEMINI_API_KEY="your-gemini-api-key"
 ```
 
 ---
 
-## 5. Pre-Loaded Campus Corpus (`data/sample_docs/`)
+## 8. Evaluation Benchmark Results
 
-The repository automatically generates and indexes 4 realistic multi-page campus documents on startup:
-1. **`CS301_AI_Syllabus_2026.pdf` (3 Pages):** Course grading breakdown (25% assignments, 25% midterm, 20% project, 30% final), 3 grace slip days, 10%/day late penalty, and exam schedule.
-2. **`Academic_Regulations_Handbook.pdf` (3 Pages):** Mandatory 75% attendance rule, 10% medical relaxation (down to 65%), 10-point CGPA grading scale, Academic Probation (`SGPA < 5.00`), and 15% Turnitin / Generative AI disclosure rules.
-3. **`Campus_Hostel_Library_Circular.pdf` (3 Pages):** Hostel curfew timings (11:00 PM weekdays, 11:59 PM weekends), Digital Night Pass, Central Library borrowing limits (5 books / 14 days for UG; Rs. 5–15/day overdue fine), and EduRoam 50 GB/week quota.
-4. **`Scholarship_Internship_Guidelines.html` (2 Pages):** Merit-cum-Means (MCM) scholarship (50% tuition waiver + Rs. 3,000/month stipend, income `< Rs. 6L`, `CGPA >= 7.50`), Dean's Merit award (`Rs. 40,000`), and 6-month industrial internship NOC rules (`12 credits`).
+Tested across the **14-question SQuAD-style Campus Benchmark** (10 in-scope syllabus and academic policy queries with ground-truth citations + 4 out-of-scope adversarial questions):
 
----
-
-## 6. Evaluation Results & Metrics
-
-Evaluated across the **14-question SQuAD-style Campus Benchmark** (`10` in-scope questions with ground-truth `[file_name, page_number]` targets + `4` out-of-scope adversarial questions):
-
-| Metric | Score | Description |
+| Metric | Measured Score | Description |
 | :--- | :--- | :--- |
-| **Retrieval Hit-Rate @ 1** | **100.0% (`1.0000`)** | Exact target document & page ranked `#1` on all 10 in-scope queries |
-| **Retrieval Hit-Rate @ 4** | **100.0% (`1.0000`)** | Exact target document & page present in top-4 retrieved chunks |
-| **Mean Reciprocal Rank (MRR)** | **`1.0000`** | Average reciprocal rank of the ground-truth page across all queries |
-| **Mean Answer Faithfulness** | **87.15% (`0.8715`)** | Fraction of substantive answer tokens grounded directly in cited chunks |
-| **Out-of-Scope Refusal Accuracy** | **100.0% (`4 / 4`)** | Adversarial queries (pizza recipe, FIFA World Cup, NVIDIA stock, Schengen visa) refused without hallucination |
-| **Average Query Latency (CPU)** | **`1.58 ms`** | End-to-end hybrid retrieval + cross-feature reranking + grounded synthesis |
+| **Retrieval Hit-Rate @ 1** | **`100.0%` (`1.0000`)** | Target document & page ranked `#1` for every in-scope query |
+| **Retrieval Hit-Rate @ 4** | **`100.0%` (`1.0000`)** | Target document & page present in top-4 retrieved chunks |
+| **Mean Reciprocal Rank (MRR)** | **`1.0000`** | Average reciprocal rank of the ground-truth page |
+| **Mean Answer Faithfulness** | **`87.15%` (`0.8715`)** | Fraction of substantive answer claims grounded directly in cited chunks |
+| **Out-of-Scope Refusal Accuracy** | **`100.0%` (`4 / 4`)** | Adversarial questions (pizza recipe, FIFA World Cup, stock price, visa) refused without hallucinating |
+| **Overall Pass Rate** | **`100.0%` (`14 / 14`)** | All queries passed retrieval, citation, and refusal checks |
+| **Average Query Latency (CPU)** | **`1.61 ms`** | End-to-end hybrid retrieval, reranking, and grounded synthesis |
 
 ---
 
-## 7. Limitations & What I Learned (Interview Talking Points)
+## 9. Interview Talking Points & Design Decisions
 
-1. **Chunk Size & Overlap Trade-offs:**
-   - Very small chunks (`< 200` chars) sever policy conditions from their exceptions (e.g., separating the `75%` attendance rule from the `65%` medical condonation clause). Very large chunks (`> 1500` chars) dilute embedding specificity and reduce page-level citation precision. Using **`chunk_size = 550` chars** with **`chunk_overlap = 120` chars** snapped to sentence boundaries achieved `1.00` MRR.
-2. **Why Hybrid Search (Dense + BM25) Beats Pure Vector Search:**
-   - Pure dense embeddings often struggle with exact alphanumeric course codes (`CS-301`), room numbers (`LHC-101`), or percentage thresholds (`15%` Turnitin limit). Blending Dense Cosine (`α = 0.55`) with Okapi BM25 (`1 - α = 0.45`) and a Stage-2 Cross-Feature Reranker ensures both semantic paraphrases and exact numbers rank `#1`.
-3. **Preventing Single-Token False Positives in Hallucination Guardrails:**
-   - Standard max-normalized BM25 assigns `1.0` to an out-of-scope question if even a single word (e.g., *"penalty"* in *"FIFA World Cup penalty shootout"*) appears in a syllabus. Normalizing BM25 by query length saturation (`3.2 * sqrt(|Q|)`) and penalizing candidates with `< 25%` query token coverage eliminated false-positive answers and raised out-of-scope refusal accuracy from `25%` to `100%`.
+1. **Chunk Size vs. Overlap Trade-offs:**
+   - Small chunks (`< 200` chars) isolate rules from exceptions (e.g. separating the `75%` attendance rule from the `65%` medical condonation clause).
+   - Large chunks (`> 1500` chars) introduce noise and weaken page-level citation precision.
+   - We selected **`550` characters** with **`120` characters overlap** snapped to sentence boundaries, yielding `1.00` MRR across the corpus.
+2. **Why Hybrid Search (Dense + BM25) Is Essential:**
+   - Pure vector embeddings struggle with exact alphanumeric tokens such as course numbers (`CS-301`), room numbers (`LHC-101`), and percentages (`75%`, `15%`). Blending dense vectors with Okapi BM25 ensures both conceptual paraphrases and exact codes rank `#1`.
+3. **Preventing Single-Token Spikes in Hallucination Guardrails:**
+   - Standard max-normalized BM25 can give a `1.0` score if an out-of-scope query contains a single common word (e.g. *"penalty"* in *"FIFA World Cup penalty shootout"* matching the late penalty section). Normalizing BM25 by query length saturation ($3.2 \times \sqrt{|Q|}$) and enforcing a 25% token coverage minimum raised refusal accuracy from $25\%$ to $100\%$.
 
 ---
 
-## 8. Responsible Use Disclaimer
+## 10. Responsible Use & Disclaimers
 
-This tool is an educational decision-support assistant for navigating campus documents. Always verify critical academic deadlines, fee payments, and medical leave applications with the official University Academic Section.
+This software is an educational decision-support tool designed to assist campus communities in navigating published documents. It is not an official university authority. For official grade appeals, formal disciplinary actions, or graduation clearance, always consult the University Academic Section.
+
+---
+
+## 11. License
+
+This project is open-source under the [MIT License](LICENSE).
